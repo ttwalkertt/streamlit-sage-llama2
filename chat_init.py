@@ -16,7 +16,7 @@ def chat_init():
     # Counter for tracking the number of interactions or other metrics
     st.session_state.ctr = 0
     
-    # Revised default system prompts to guide the behavior of the chatbot
+    # default system prompts to guide the behavior of the chatbot
     st.session_state.default_system_prompts = [
         """You are a specialized chatbot designed for users with technical expertise. 
         Prioritize clarity and accuracy in your responses. If a query is ambiguous or lacks detail, 
@@ -30,6 +30,8 @@ def chat_init():
         When faced with unclear or ambiguous questions, your protocol is to request further clarification to ensure accurate responses. 
         Omit superfluous pleasantries and uphold a strict policy against disseminating false or misleading information."""
     ]
+    # Remove newline characters from all default system prompts 
+    st.session_state.default_system_prompts = [prompt.replace('\n', ' ') for prompt in st.session_state.default_system_prompts]
     
     # Set the selected system prompt to the first default system prompt
     st.session_state.selected_system_prompt = st.session_state.default_system_prompts[0]
